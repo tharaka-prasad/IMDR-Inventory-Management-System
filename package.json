@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@inertiajs/react": "^1.2.0",
+    "@tailwindcss/forms": "^0.5.7",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "axios": "^1.7.4",
+    "laravel-vite-plugin": "^1.0.5",
+    "postcss": "^8.4.31",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^2.12.7",
+    "tailwindcss": "^3.4.0",
+    "vite": "^5.4.0"
+  }
+}
