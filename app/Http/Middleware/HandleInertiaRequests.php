@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\SystemSetting;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -25,10 +26,25 @@ class HandleInertiaRequests extends Middleware
                     'role' => $request->user()->role,
                 ] : null,
             ],
+            // Institute name + uploaded logo, available on every page
+            // (including the login page).
+            'branding' => fn () => $this->branding(),
             'flash' => [
                 'success' => fn () => $request->session()->get('success'),
                 'error' => fn () => $request->session()->get('error'),
             ],
         ]);
+    }
+
+    private function branding(): array
+    {
+        $settings = SystemSetting::first();
+
+        return [
+            'name' => $settings?->institute_name ?: 'IMDR',
+            'logo_url' => $settings?->logo_path
+                ? '/storage/' . $settings->logo_path . '?v=' . $settings->updated_at?->timestamp
+                : null,
+        ];
     }
 }
