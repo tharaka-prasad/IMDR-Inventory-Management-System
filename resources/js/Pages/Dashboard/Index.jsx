@@ -3,6 +3,7 @@ import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, Tool
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import StatCard from '@/Components/StatCard';
 import DataTable from '@/Components/DataTable';
+import { formatDate } from '@/utils/date';
 
 const COLORS = ['#2563eb', '#0d9488', '#ea580c', '#7c3aed', '#16a34a', '#dc2626'];
 
@@ -115,7 +116,7 @@ function AssigneeDashboard({ assignments }) {
                     { key: 'item_name', label: 'Item', render: (r) => r.inventory?.item_name },
                     { key: 'category', label: 'Category', render: (r) => r.inventory?.category?.name },
                     { key: 'quantity', label: 'Qty' },
-                    { key: 'issue_date', label: 'Issue Date' },
+                    { key: 'issue_date', label: 'Issue Date', render: (r) => formatDate(r.issue_date) },
                     { key: 'status', label: 'Status' },
                 ]}
                 rows={assignments}

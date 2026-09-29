@@ -2,6 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import DataTable from '@/Components/DataTable';
 import Pagination from '@/Components/Pagination';
+import { formatDate } from '@/utils/date';
 
 export default function Index({ returns }) {
     return (
@@ -19,9 +20,9 @@ export default function Index({ returns }) {
                     { key: 'asset', label: 'Asset', render: (r) => `${r.assignment?.inventory?.asset_code} - ${r.assignment?.inventory?.item_name}` },
                     { key: 'assignee', label: 'Returned By', render: (r) => r.assignment?.assignee?.full_name },
                     { key: 'quantity', label: 'Qty' },
-                    { key: 'return_date', label: 'Return Date' },
+                    { key: 'return_date', label: 'Return Date', render: (r) => formatDate(r.return_date) },
                     { key: 'condition', label: 'Condition' },
-                    { key: 'receivedBy', label: 'Received By', render: (r) => r.receivedBy?.full_name },
+                    { key: 'received_by', label: 'Received By', render: (r) => r.received_by?.full_name },
                 ]}
                 rows={returns.data}
             />

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use App\Traits\HasUserStamps;
@@ -31,6 +30,6 @@ class ReturnProduct extends Model
 
     public function receivedBy(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'received_by');
+        return $this->belongsTo(User::class, 'received_by')->withTrashed();
     }
 }

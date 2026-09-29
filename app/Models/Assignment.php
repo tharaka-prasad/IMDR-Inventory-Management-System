@@ -33,14 +33,16 @@ class Assignment extends Model
         return $this->belongsTo(Inventory::class);
     }
 
-    public function assignee(): BelongsTo
+        public function assignee(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'assigned_to');
+        // withTrashed(): assignment history must stay readable even if the
+        // assignee's account is later disabled/removed.
+        return $this->belongsTo(User::class, 'assigned_to')->withTrashed();
     }
 
     public function issuedBy(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'given_by');
+        return $this->belongsTo(User::class, 'given_by')->withTrashed();
     }
 
     public function returns(): HasMany

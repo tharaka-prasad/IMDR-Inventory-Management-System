@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import react from '@vitejs/plugin-react';
-import path from 'path';
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
     plugins: [
@@ -11,9 +12,9 @@ export default defineConfig({
         }),
         react(),
     ],
-    resolve: {
-        alias: {
-            '@': path.resolve(__dirname, 'resources/js'),
+    css: {
+        postcss: {
+            plugins: [tailwindcss, autoprefixer],
         },
     },
 });

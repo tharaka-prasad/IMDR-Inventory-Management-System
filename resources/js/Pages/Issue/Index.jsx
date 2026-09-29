@@ -3,6 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import DataTable from '@/Components/DataTable';
 import SearchFilter from '@/Components/SearchFilter';
 import Pagination from '@/Components/Pagination';
+import { formatDate } from '@/utils/date';
 
 export default function Index({ assignments, filters }) {
     return (
@@ -34,8 +35,8 @@ export default function Index({ assignments, filters }) {
                     { key: 'asset_code', label: 'Asset', render: (r) => `${r.inventory?.asset_code} - ${r.inventory?.item_name}` },
                     { key: 'assignee', label: 'Assigned To', render: (r) => r.assignee?.full_name },
                     { key: 'quantity', label: 'Qty' },
-                    { key: 'issue_date', label: 'Issue Date' },
-                    { key: 'issuedBy', label: 'Given By', render: (r) => r.issuedBy?.full_name },
+                    { key: 'issue_date', label: 'Issue Date', render: (r) => formatDate(r.issue_date) },
+                    { key: 'issued_by', label: 'Given By', render: (r) => r.issued_by?.full_name },
                     { key: 'status', label: 'Status', render: (r) => <span className="capitalize">{r.status.replace('_', ' ')}</span> },
                 ]}
                 rows={assignments.data}
