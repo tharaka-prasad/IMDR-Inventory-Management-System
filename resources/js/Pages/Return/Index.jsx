@@ -28,6 +28,6 @@ export default function Index({ returns }) {
             />
 
             <Pagination links={returns.links} />
-        </AuthenticatedLayout>
+        </AuthenticatedLayout> 
     );
 }
